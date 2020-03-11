@@ -19,60 +19,50 @@ public class Service {
         System.out.println("6. Exit");
     }
 
-    void printFlights () {
+    void printFlights() {
         System.out.println("----");
         dao.getAll().stream().forEach(System.out::println);
         System.out.println("----");
     }
 
-    void printFlightByID () {
+    void printFlightByID() {
         System.out.println("Please enter Flight ID: ");
         idInput = scan.nextInt();
         System.out.println(dao.get(idInput).toString());
     }
 
-void flightBooking () {
-    System.out.print("Please enter destination address: ");
-    String destination = scan.next();
-    System.out.print("Please enter flight date like this 'yyyy-mm-dd': ");
-    String flightDate = scan.next();
-    System.out.print("Please enter passenger count: ");
-    int passengerCount = scan.nextInt();
+    void flightBooking() {
+        System.out.print("Please enter destination address: ");
+        String destination = scan.next();
+        System.out.print("Please enter flight date like this 'yyyy-mm-dd': ");
+        String flightDate = scan.next();
+        System.out.print("Please enter passenger count: ");
+        int passengerCount = scan.nextInt();
 
-    System.out.println(dao.getAllBy(p -> (p.Destination.equals(destination) && p.Seats >= passengerCount)));
+        System.out.println(dao.getAllBy(p -> (p.Destination.equals(destination) && p.Seats >= passengerCount && p.flightTime.toLocalDate().toString().equals(flightDate))) + "\n");
 
-}
+    }
 
     void selectMenu() {
         do {
-            input=scan.nextInt();
+            input = scan.nextInt();
             switch (input) {
-                case 1: {
-                    printFlights();
-                }
+                case 1: printFlights();
                     break;
-                case 2: {
-                    printFlightByID();
-                }
+                case 2: printFlightByID();
                     break;
-                case 3:
-                   flightBooking();
+                case 3: flightBooking();
                     break;
-                case 4:
-                    System.out.println("Flight is cancelled");
+                case 4: System.out.println("Flight is cancelled");
                     break;
-                case 5:
-                    System.out.println("You have below flights");
+                case 5: System.out.println("You have below flights");
                     break;
-                case 6:
-                    System.out.println("Bye Bye");
+                case 6: System.out.println("Bye Bye");
                     break;
-                // System.out.println();
-                case 0:
-                    menu();
+                case 0: menu();
                     break;
             }
-        } while (input!=6);
+        } while (input != 6);
     }
 
 }

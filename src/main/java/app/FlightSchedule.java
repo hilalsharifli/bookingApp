@@ -23,7 +23,7 @@ public class FlightSchedule implements Serializable {
   }
 
   public static FlightSchedule parse(String line) {
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     String[] chunks = line.split(";");
     return new FlightSchedule(
         Integer.parseInt(chunks[0]),
