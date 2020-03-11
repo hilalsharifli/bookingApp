@@ -40,7 +40,14 @@ public class Service {
         int passengerCount = scan.nextInt();
 
         System.out.println(dao.getAllBy(p -> (p.Destination.equals(destination) && p.Seats >= passengerCount && p.flightTime.toLocalDate().toString().equals(flightDate))) + "\n");
+    }
 
+    void flightCancel() {
+        System.out.println("Flight is cancelled");
+    }
+
+    void myFlightShow() {
+        System.out.println("You have below flights");
     }
 
     void selectMenu() {
@@ -53,9 +60,9 @@ public class Service {
                     break;
                 case 3: flightBooking();
                     break;
-                case 4: System.out.println("Flight is cancelled");
+                case 4: flightCancel();
                     break;
-                case 5: System.out.println("You have below flights");
+                case 5: myFlightShow();
                     break;
                 case 6: System.out.println("Bye Bye");
                     break;
