@@ -17,6 +17,7 @@ public class Service {
         System.out.println("4. Cancel the booking");
         System.out.println("5. My Flights");
         System.out.println("6. Exit");
+        System.out.println("0. Back to main Menu");
     }
 
     void printFlights() {
@@ -38,8 +39,11 @@ public class Service {
         String flightDate = scan.next();
         System.out.print("Please enter passenger count: ");
         int passengerCount = scan.nextInt();
-
         System.out.println(dao.getAllBy(p -> (p.Destination.equals(destination) && p.Seats >= passengerCount && p.flightTime.toLocalDate().toString().equals(flightDate))) + "\n");
+        System.out.print("Please enter flight ID for booking: ");
+        int flightID = scan.nextInt();
+        System.out.println("Please enter name and surname of passenger: ");
+        String passenger = scan.next();
     }
 
     void flightCancel() {
